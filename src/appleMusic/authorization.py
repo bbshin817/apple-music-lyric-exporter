@@ -1,6 +1,6 @@
 import requests, re
 from pathlib import Path
-import config
+from . import config
 
 def getAccessToken():
 	response = requests.get(
@@ -27,4 +27,4 @@ def getMediaUserToken():
 	return mediaUserToken
 
 if __name__ == '__main__':
-	print(getMediaUserToken())
+	print(getAccessToken(), getMediaUserToken())
