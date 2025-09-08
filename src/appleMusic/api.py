@@ -23,13 +23,13 @@ class AppleMusicAPI:
 			raise Exception('有効なApple Music サブスクリプションが存在するmediaUserTokenを指定してください')
 		return isSubscriptionActive
 	
-	def getSyllableLyricAsDictXml(self, trackId):
+	def getSyllableLyricAsTTML(self, trackId):
 		response = self.session.get(
 			f'https://amp-api.music.apple.com/v1/catalog/jp/songs/{trackId}/syllable-lyrics'
 		)
 		assert response, '歌詞の取得に失敗しました'
 		response = response.json()
-		return xmltodict.parse(response['data'][0]['attributes']['ttml'])
+		return response['data'][0]['attributes']['ttml']
 
 if __name__ == '__main__':
 	API = AppleMusicAPI()

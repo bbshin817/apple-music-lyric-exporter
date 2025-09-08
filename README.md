@@ -20,7 +20,7 @@
 	└── media-user-token
 	```
 
-2.	コンソールで次のように実行すると、歌詞が.json形式で./outputsへ保存されます
+2.	コンソールで次のように実行すると、**TTML形式のオリジナル** と、 **JSON形式のSpotifyライクフォーマット** の2つのデータがそれぞれカレントディレクトリに保存されます。
 
 	```
 	$ python main.py "https://music.apple.com/jp/song/..."

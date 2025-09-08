@@ -12,9 +12,13 @@ if __name__ == '__main__':
 		trackId = getTrackIdFromUrl(sys.argv[1])
 		if trackId is None:
 			error('有効なトラックURLを渡してください')
+		rawLyrics = API.getSyllableLyricAsTTML(trackId)
+		with open('./raw-lyric.xml', 'w', encoding='utf-8') as f:
+			f.write(rawLyrics)
+			f.close()
 		with open('./lyrics.json', 'w', encoding='utf-8') as f:
-			lyrics = API.getSyllableLyricAsDictXml(trackId)
-			lyrics = src.formatter.toSpotifyJson(lyrics)
-			json.dump(lyrics, f, ensure_ascii=False, indent=4)
+			lyrics = src.formatter.parseSpotify(rawLyrics)
+			json.dump({'lyric' : lyrics}, f, ensure_ascii=False, indent=4)
+			f.close()
 	except Exception as e:
 		error(str(e))
