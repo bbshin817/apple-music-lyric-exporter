@@ -1,4 +1,4 @@
-import requests, xmltodict
+import requests
 from . import authorization, config
 
 class AppleMusicAPI:
